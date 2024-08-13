@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/footer.js",
+    "src/components/fixed-plugin.js",
+    "src/components/index.ts",
+    "src/components/layout.js",
+    "src/components/navbar.js",
+    "src/components/project-card.js",
+    "src/components/resume-item.js",
+    "src/components/skill-card.js",
+    "src/app/hero.js",
+    "src/app/contact-form.js",
+    "src/app/clients.js",
+    "src/app/layout.js",
+    "src/app/page.js",
+    "src/app/projects.js",
+    "src/app/popular-clients.js"
+, "src/app/resume.js", "src/app/testimonial.js", "src/app/skills.js"  ],
+  "exclude": ["node_modules"]
+}
