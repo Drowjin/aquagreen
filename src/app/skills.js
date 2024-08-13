@@ -106,14 +106,11 @@ export function Skills() {
   }, []);
 
   return (
-    <div className="px-8 max-w-screen bg-gray-50 overflow-x-hidden">
+    <div className="px-8 max-w-screen overflow-x-hidden">
       <div ref={animationRef} className={`container mx-auto mb-20 text-center  ${isVisible ? ' animate__animated  animate__fadeInRight  visible' : 'invisible'} `}>
-        <Typography color="blue-gray" className="mb-2 font-bold uppercase">
-          WHO WE ARE
+        <Typography color="blue-gray" className="mb-2 mt-14 text-light-blue-800 xl:text-6xl md:text-3xl text-xl font-bold text-center uppercase">
+          Packaged Mineral Drinking Water
         </Typography>
-        {/* <Typography variant="h1" color="blue-gray" className="mb-4">
-          What I do
-        </Typography> */}
         <Typography
           variant="lead"
           className="mx-auto w-full !text-gray-500 lg:w-10/12"
@@ -121,11 +118,11 @@ export function Skills() {
           AQUA GREEN is leading the packaged drinking water manufacturer and supplier in the Western part of India.AQUA GREEN has a pure and refreshing taste, which can be attributed to its unique arrangement of minerals and trace elements.We start with the Local water supply, which is then filtered by reverse osmosis to remove impurities. The purified water is then enhanced with a special blend of minerals for the pure, crisp, fresh water taste that’s delightfully AQUA GREEN.
         </Typography>
       </div>
-      <div ref={animationRef2} className={`container mx-auto grid grid-cols-1 gap-y-10 md:grid-cols-2 lg:grid-cols-3 ${isVisibleSecond ? ' animate__animated  animate__fadeInLeft  visible' : 'invisible'}`}>
+      {/* <div ref={animationRef2} className={`container mx-auto grid grid-cols-1 gap-y-10 md:grid-cols-2 lg:grid-cols-3 ${isVisibleSecond ? ' animate__animated  animate__fadeInLeft  visible' : 'invisible'}`}>
         {SKILLS.map((props, idx) => (
           <SkillCard key={idx} {...props} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

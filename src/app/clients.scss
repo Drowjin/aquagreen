@@ -275,8 +275,7 @@ $letterStagger: 0.1s;
 
   &__control {
     $size: 50px;
-
-    z-index: 100;
+    z-index: 10;
     position: absolute;
     left: 50px;
     top: 50%;

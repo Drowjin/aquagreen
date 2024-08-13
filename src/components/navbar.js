@@ -2,21 +2,19 @@ import React from "react";
 import {
   Navbar as MTNavbar,
   Collapse,
-  Button,
   IconButton,
   Typography,
 } from "@material-tailwind/react";
 import {
-  RectangleStackIcon,
-  UserCircleIcon,
-  CommandLineIcon,
-  Squares2X2Icon,
   XMarkIcon,
   Bars3Icon,
-  ClipboardDocumentIcon,
-  FolderMinusIcon,
-  StarIcon,
-  EllipsisHorizontalCircleIcon,
+  HomeIcon,
+  UserCircleIcon,
+  CubeIcon,
+  CheckCircleIcon,
+  ChatBubbleLeftRightIcon,
+  PhotoIcon,
+  EnvelopeIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter } from 'next/navigation'
 import 'animate.css';
@@ -26,28 +24,38 @@ import Image from "next/image";
 
 const NAV_MENU = [
   {
-    name: "About",
-    icon: RectangleStackIcon,
+    name: "Home",
+    icon: HomeIcon,
     href: "/",
   },
   {
-    name: "Projects",
-    icon: FolderMinusIcon,
-    href: "/projects",
+    name: "About Us",
+    icon: UserCircleIcon,
+    href: "/about",
   },
   {
-    name: "Skills",
-    icon: StarIcon,
-    href: "skills",
+    name: "Products",
+    icon: CubeIcon,
+    href: "/products",
+  },
+  {
+    name: "Quality Process",
+    icon: CheckCircleIcon,
+    href: "/quality",
   },
   {
     name: "Testimonials",
-    icon: CommandLineIcon,
-    href: "testimonial",
+    icon: ChatBubbleLeftRightIcon,
+    href: "/testimonials",
+  },
+  {
+    name: "Gallery",
+    icon: PhotoIcon,
+    href: "/gallery",
   },
   {
     name: "Contact",
-    icon: EllipsisHorizontalCircleIcon,
+    icon: EnvelopeIcon,
     href: "/contact",
   },
 ];
@@ -83,7 +91,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <MTNavbar shadow={false} fullWidth className="border-0 sticky top-0 bg-green-800 backdrop-blur-lg bg-opacity-5 z-50">
+    <MTNavbar shadow={true} fullWidth className="border-0 sticky top-0 backdrop-blur-lg bg-opacity-5 z-50">
       <div className="container mx-auto flex items-center justify-between ">
         <Typography color="blue-gray" className="text-lg font-bold">
           <Image src={'/logo.png'} width={200} height={150} />
@@ -91,15 +99,19 @@ export function Navbar() {
         <ul className="ml-10 hidden items-center gap-8 lg:flex">
           {NAV_MENU.map(({ name, icon: Icon, href }) => (
             <NavItem key={name} href={href}>
-              <div className="flex gap-2 cursor-pointer" onClick={() => router.push(href)}>
+              <div className="flex gap-2 cursor-pointer items-center" onClick={() => router.push(href)}>
+                <div>
                 <Icon className="h-5 w-5 " />
+                </div>
+                <div className="text-center">
                 {name}
+                </div>
               </div>
             </NavItem>
           ))}
         </ul>
         <div className="hidden items-center gap-2 lg:flex">
-          <Button variant="text">Sign In</Button>
+          {/* <Button variant="text">Sign In</Button> */}
         </div>
         <IconButton
           variant="text"
@@ -125,7 +137,7 @@ export function Navbar() {
             ))}
           </ul>
           <div className="mt-6 mb-4 flex items-center gap-2">
-            <Button variant="text">Sign In</Button>
+            {/* <Button variant="text">Sign In</Button> */}
           </div>
         </div>
       </Collapse>

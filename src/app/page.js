@@ -10,19 +10,25 @@ import Testimonial from "./testimonial";
 import PopularClients from "./popular-clients";
 import ContactForm from "./contact-form";
 import Resume from "./resume";
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export default function Portfolio() {
   return (
-    <div className="relative">
+    <div className={` ${roboto.className} bg-[#eceff1]`}>
       <Navbar />
-      sdfsdfsdfd
-      <Hero />
       <Clients />
       <Skills />
+      <Hero />  
       <Projects />
-      <Resume />
+      {/* <Resume /> */}
       {/* <Testimonial /> */}
-      <PopularClients />
+      {/* <PopularClients /> */}
       <ContactForm />
       <Footer />
     </div>
