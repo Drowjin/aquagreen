@@ -15,6 +15,7 @@ export default function Portfolio() {
   return (
     <div className="relative">
       <Navbar />
+      sdfsdfsdfd
       <Hero />
       <Clients />
       <Skills />
