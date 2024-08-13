@@ -1,77 +1,87 @@
 "use client";
 
-import Image from "next/image";
-import { Input, Button, Typography } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
-import waterBottle from '../../public/bottle.png'
+import { Typography } from "@material-tailwind/react";
 
 function Hero() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  const slides = [
-    waterBottle,
-    '/bottle.png',
-    '/waterbottle.png',
-    '/bottledwater-3.jpg',
-    '/bottle-4.jpg'
-    // "/docs/images/carousel/carousel-2.svg",
-    // "/docs/images/carousel/carousel-3.svg",
-    // "/docs/images/carousel/carousel-4.svg",
-    // "/docs/images/carousel/carousel-5.svg",
-  ];
-
-  useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isPlaying]);
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-  };
   return (
-    <header className="bg-gray-50">
-      <div className="max-w-7xl  px-8 container mx-auto grid h-full gap-10  w-full grid-cols-1 items-center">
-        <div className=" relative w-full " >
-          <div className="bg-image right-0 fixed w-full h-[70vh] -z-10 opacity-90 bg-gray-50">
+    <>
+      <div className="max-w-7xl px-8 container mx-auto grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 w-full h-full relative">
+        {/* Card 1: Image on the Left */}
+        <div style={{ boxShadow: '#81d4fa 20px 60px 200px inset' }} className="mobile-shadow-1 lg:relative md:rounded-xl lg:rounded-xl md:relative lg:left-[35px] lg:top-[60px] md:z-0 md:left-[10px] md:top-[30px] lg:z-0 w-full h-full flex flex-col lg:flex-row justify-center items-center bg-gray-50 shadow-2xl animate__animated animate__fadeInLeft p-6 -translate-x-8 lg:-translate-x-12">
+          <div className="w-full flex justify-center lg:justify-start">
+            <img src={'/bottle4.png'} className="w-3/4 lg:w-full h-auto !object-cover" alt="Aqua Green Bottle" />
           </div>
-          <div className="md:absolute flex md:flex-row flex-col gap-6 lg:mt-[10%] md:mt-[25%] mt-[10%]">
-            <div className="md:w-1/2 w-full backdrop-blur-xl h-fit p-6 mt-10 rounded-xl shadow-2xl animate__animated animate__fadeInLeft ">
-              <div className="flex text-green-600 xl:text-6xl md:text-3xl text-xl mx-auto w-fit md:font-bold font-semibold">AQUA GREEN</div>
-              <div className="flex text-gray-800 font-[monospace] xl:text-base  text-xs md:font-medium font-normal lg:font-semibold lg:mt-5 mt-3 mx-auto max-w-7xl text-center">The manufacturing of AQUA GREEN packaged drinking water involves multiple levels of stringent filtration processes and tests before it’s served to our customers. Chlorination- Reduces the microbial load in the feed water. Pressure Sand Filter – Removes all the suspended solids and particles, bringing the water substantial clarity.Activated Carbon Filtration- Removes contaminants like color, odor, and various other organic impurities by absorption.Bag Filter-Removes fine particles, to control the load on micron filters.</div>
+        </div>
+
+        {/* Card 2: Text on the Right */}
+        <div className="lg:relative md:relative lg:z-10 md:z-10 lg:right-[35px] md:right-[10px] w-full h-full flex flex-col lg:flex-row justify-center items-center bg-gray-50 md:rounded-xl ld:rounded-xl shadow-2xl animate__animated animate__fadeInRight p-6 lg:translate-x-12">
+          <div className="text-container flex flex-col gap-6 mt-6 lg:mt-0 justify-center items-center">
+            <div className="text-light-blue-200 xl:text-6xl md:text-3xl text-xl font-bold text-center lg:text-left">
+              AQUA GREEN
             </div>
-            <div className="md:w-1/2 w-full  rounded-xl flex items-center h-fit backdrop-blur-2xl justify-center shadow-2xl md:mt-36 animate__animated animate__fadeInRight">
-              <img src={'/bottle4.png'} className="w-full h-[80%]" />
-            </div>
+            {/* <div className="text-gray-500 xl:text-base text-xs md:font-medium font-normal lg:font-semibold lg:mt-5 mt-3 text-center lg:text-left max-w-full"> */}
+            <Typography
+              variant="lead"
+              className="mx-auto w-full !text-gray-500 lg:w-11/12"
+            >
+              The manufacturing of AQUA GREEN packaged drinking water involves multiple levels of stringent filtration processes and tests before it’s served to our customers. Chlorination - Reduces the microbial load in the feed water. Pressure Sand Filter – Removes all the suspended solids and particles, bringing the water substantial clarity. Activated Carbon Filtration - Removes contaminants like color, odor, and various other organic impurities by absorption. Bag Filter - Removes fine particles, to control the load on micron filters.
+            </Typography>
+            {/* </div> */}
           </div>
-          {/* <button
-            type="button"
-            className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            onClick={nextSlide}
-            data-carousel-next
-          >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-              </svg>
-              <span className="sr-only">Next</span>
-            </span>
-          </button> */}
         </div>
       </div>
-    </header >
+
+      <div className="max-w-7xl px-8 container mx-auto grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 w-full h-full relative mt-20">
+        {/* Card 2: Text on the Right */}
+        <div className="order-last md:order-first lg:relative md:rounded-xl lg:rounded-xl md:relative lg:left-[35px] lg:top-[60px] md:z-10 md:left-[10px] md:top-[30px] lg:z-10 w-full h-full flex flex-col lg:flex-row justify-center items-center bg-gray-50 ld:rounded-xl shadow-2xl animate__animated animate__fadeInLeft p-6 -translate-x-8 lg:translate-x-12">
+          <div className="text-container flex flex-col gap-6 mt-6 lg:mt-0 justify-center items-center">
+            <div className="text-green-200 xl:text-6xl md:text-3xl text-xl font-bold text-center lg:text-left">
+              WHO WE ARE
+            </div>
+            {/* <div className="text-gray-500 xl:text-base text-xs md:font-medium font-normal lg:font-semibold lg:mt-5 mt-3 text-center lg:text-left max-w-full"> */}
+            <Typography
+              variant="lead"
+              className="mx-auto w-full !text-gray-500 lg:w-11/12"
+            >
+              AQUA GREEN is leading the packaged drinking water manufacturer and supplier in the Western part of India.AQUA GREEN has a pure and refreshing taste, which can be attributed to its unique arrangement of minerals and trace elements.We start with the Local water supply, which is then filtered by reverse osmosis to remove impurities. The purified water is then enhanced with a special blend of minerals for the pure, crisp, fresh water taste that’s delightfully AQUA GREEN.
+            </Typography>
+            {/* </div> */}
+          </div>
+        </div>
+        {/* Card 1: Image on the Left */}
+        <div style={{ boxShadow: '#c8e6c9 0px 0px 150px 60px inset' }} className="mobile-shadow-2 lg:right-[35px] md:right-[10px] order-first md:order-last md:rounded-xl lg:rounded-xl lg:relative md:relative lg:z-0 md:z-0 w-full h-full flex flex-col lg:flex-row justify-center items-center bg-gray-50 shadow-2xl animate__animated animate__fadeInRight p-6 -translate-x-8 lg:-translate-x-12">
+          <div className="w-full flex justify-center lg:justify-start">
+            <img src={'/edit-second.png'} className="w-3/4 lg:w-full h-auto !object-cover" alt="Aqua Green Bottle" />
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl px-8 container mx-auto grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 w-full h-full relative mt-20">
+        {/* Card 1: Image on the Left */}
+        <div style={{ boxShadow: '#b39ddb 20px 60px 200px inset' }} className="mobile-shadow-3 lg:relative md:rounded-xl lg:rounded-xl md:relative lg:left-[35px] lg:top-[60px] md:z-0 md:left-[10px] md:top-[30px] lg:z-0 w-full h-full flex flex-col lg:flex-row justify-center items-center bg-gray-50 shadow-2xl animate__animated animate__fadeInLeft p-6 -translate-x-8 lg:-translate-x-12">
+          <div className="w-full flex justify-center lg:justify-start">
+            <img src={'/edit-third.png'} className="w-3/4 lg:w-full h-auto !object-cover" alt="Aqua Green Bottle" />
+          </div>
+        </div>
+
+        {/* Card 2: Text on the Right */}
+        <div className="lg:relative md:relative lg:z-10 md:z-10 lg:right-[35px] md:right-[10px] w-full h-full flex flex-col lg:flex-row justify-center items-center bg-gray-50 md:rounded-xl ld:rounded-xl shadow-2xl animate__animated animate__fadeInRight p-6 lg:translate-x-12">
+          <div className="text-container flex flex-col gap-6 mt-6 lg:mt-0 justify-center items-center">
+            <div className="text-deep-purple-200 xl:text-6xl md:text-3xl text-xl font-bold text-center lg:text-left">
+              Quality Process
+            </div>
+            {/* <div className="text-gray-500 xl:text-base text-xs md:font-medium font-normal lg:font-semibold lg:mt-5 mt-3 text-center lg:text-left max-w-full"> */}
+            <Typography
+              variant="lead"
+              className="mx-auto w-full !text-gray-500 lg:w-11/12"
+            >
+              Water is carefully collected and received through stainless steel pipes from a local well. Quality testing of the original source is conducted regularly to monitor for abnormalities. A water softener is used to reduce water hardness. Demineralization removes unwanted minerals (through reverse osmosis or distillation).Water received in storage tanks is monitored on a daily basis.
+            </Typography>
+            {/* </div> */}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
